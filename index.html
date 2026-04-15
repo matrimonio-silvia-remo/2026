@@ -93,20 +93,17 @@ nav {
   background: rgba(245,240,230,0.94);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(192,86,42,0.12);
-  padding: 0 2.5rem;
-  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.5rem;
+  display: flex; align-items: center; justify-content: center;
   height: 56px;
   transition: box-shadow 0.3s;
 }
 nav.scrolled { box-shadow: 0 2px 24px rgba(92,51,37,0.08); }
-.nav-brand {
-  font-family: var(--font-title); font-style: italic;
-  font-size: 1.15rem; color: var(--brown); letter-spacing: 0.04em;
-}
-.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-brand { display: none; }
+.nav-links { display: flex; gap: 1.6rem; list-style: none; }
 .nav-links a {
-  font-family: var(--font-ui); font-size: 0.7rem;
-  letter-spacing: 0.18em; text-transform: uppercase;
+  font-family: var(--font-ui); font-size: 0.68rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--brown-mid); text-decoration: none;
   transition: color 0.2s;
 }
@@ -132,8 +129,8 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(92,51,37,0.08); }
 .hero-body { position: relative; z-index: 2; margin-top: 8rem; }
 
 .hero-eyebrow {
-  font-family: var(--font-body); font-style: italic;
-  font-size: clamp(1.1rem, 2.2vw, 1.5rem); color: var(--brown-mid);
+  font-family: var(--font-body); font-style: italic; font-weight: 700;
+  font-size: clamp(2rem, 6vw, 3rem); color: var(--brown);
   margin-bottom: 0.75rem;
   animation: fadeUp 0.9s var(--ease) both;
 }
@@ -252,9 +249,9 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(92,51,37,0.08); }
 .story-text-col {}
 .story-body {
   font-family: var(--font-body); font-size: 1.1rem;
-  line-height: 1.85; color: var(--brown-mid);
+  line-height: 1.45; color: var(--brown-mid);
 }
-.story-body p { margin-bottom: 0.75rem; }
+.story-body p { margin-bottom: 0.5rem; }
 .story-pull {
   font-family: var(--font-title); font-style: italic;
   font-size: 1.05rem;
@@ -542,13 +539,70 @@ footer {
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── MOBILE LEGGIBILITÀ ─────────────── */
+@media(max-width: 680px) {
+  html { font-size: 17px; }
+  body { font-weight: 400; line-height: 1.75; }
+
+  /* Hero */
+  .hero-names-svg { width: clamp(260px, 88vw, 400px); }
+  .hero-date-linear { font-size: 1.4rem; }
+  .hero-location { font-size: 0.82rem; letter-spacing: 0.25em; }
+  .cd-num { font-size: 1.75rem; }
+  .cd-label { font-size: 0.62rem; }
+
+  /* Sezioni generali */
+  .section-label { font-size: 0.72rem; }
+  .section-title { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+  .ornament { font-size: 0.85rem; }
+
+  /* Storia */
+  .story-body { font-size: 1.15rem; color: var(--brown); }
+  .story-pull { font-size: 1rem; }
+
+  /* Info card */
+  .info-body { font-size: 0.95rem; color: var(--brown); line-height: 1.7; }
+  .info-title { font-size: 1.1rem; }
+
+  /* Timeline */
+  .tl-time { font-size: 1.1rem; }
+  .tl-event { font-size: 0.92rem; font-weight: 500; }
+  .tl-detail { font-size: 0.85rem; color: var(--brown); }
+
+  /* Alloggio */
+  .acc-name { font-size: 1.05rem; }
+  .acc-body { font-size: 0.92rem; color: var(--brown); }
+  .acc-dist { font-size: 0.72rem; }
+  .acc-footer-note { font-size: 0.92rem; }
+
+  /* Logistica */
+  .dir-title { font-size: 0.78rem; }
+  .dir-body { font-size: 0.92rem; color: var(--brown); }
+  .location-head { font-size: 0.72rem; }
+
+  /* RSVP */
+  .rsvp-intro { font-size: 1.05rem; }
+  .form-label { font-size: 0.74rem; }
+  .form-input, .form-select, .form-textarea { font-size: 1rem; }
+  .attend-opt label { font-size: 0.78rem; }
+
+  /* Regalo / IBAN */
+  .gift-quote { font-size: 1.1rem; }
+  .gift-note { font-size: 0.95rem; color: var(--brown); }
+  .iban-name { font-size: 0.95rem; }
+  .iban-number { font-size: 0.92rem; }
+
+  /* Link testi */
+  .link-text { font-size: 0.76rem; }
+  .section-label { letter-spacing: 0.2em; }
+}
 </style>
 </head>
 <body>
 
 <!-- ══ NAV ════════════════════════════════════ -->
 <nav id="main-nav">
-  <span class="nav-brand">Silvia & Remo</span>
   <ul class="nav-links">
     <li><a href="#story">La storia</a></li>
     <li><a href="#notes">Informazioni utili</a></li>
@@ -565,7 +619,7 @@ footer {
   <div class="hero-floral"></div>
   <div class="hero-body">
     <p class="hero-eyebrow">Ci sposiamo!</p>
-    <img src="silvia-remo.svg" alt="Silvia e Remo" class="hero-names-svg">
+    <img src="silvia-remo.png" alt="Silvia e Remo" class="hero-names-svg">
     <div class="hero-rule"><span class="hero-rule-dot">✦</span></div>
     <p class="hero-date-linear">13 Settembre 2026</p>
     <p class="hero-location">Castell'Arquato</p>
