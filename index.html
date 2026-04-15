@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silvia & Remo — 13 Settembre 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- FONT SCELTA FINALE: Playfair Display per titoli (opzione 1) -->
+<!-- Alt opzione 2: Libre Baskerville — opzione 3: DM Serif Display -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════
+   DESIGN TOKENS — PALETTE DEFINITIVA
+   ══════════════════════════════════════════
+   MARRONE SCURO  #5c3325  → testo principale, footer
+   MARRONE MED    #8a5e4a  → testo secondario
+   MARRONE CHIARO #c4a090  → hint, dettagli
+   AVORIO CALDO   #f5f0e6  → sfondo principale
+   AVORIO MED     #ede8dc  → sfondo sezioni alt
+   CREMA          #faf7f0  → sfondo card/bianco
+   PAPAVERO       #c0562a  → accent primario (CTA, label, dot)
+   ARANCIO        #e0855a  → hover, gradiente warm
+   FUCSIA         #b83670  → accent secondario (titoli sezione, highlight)
+   FUCSIA CHIARO  #d4789a  → bordure, ornamenti
+   ROSA           #eac4ce  → bordure soft, fill delicato
+   SALVIA         #6e8b5e  → badge distanza, link, dettagli nat.
+   ══════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --brown:         #5c3325;
+  --brown-mid:     #8a5e4a;
+  --brown-light:   #c4a090;
+  --ivory:         #f5f0e6;
+  --ivory-warm:    #ede8dc;
+  --cream:         #faf7f0;
+  --poppy:         #c0562a;
+  --poppy-lt:      #e0855a;
+  --fuchsia:       #b83670;
+  --fuchsia-lt:    #d4789a;
+  --rose:          #eac4ce;
+  --sage:          #6e8b5e;
+  --font-title:    'Playfair Display', Georgia, serif;
+  --font-body:     'Cormorant Garamond', Georgia, serif;
+  --font-ui:       'Jost', sans-serif;
+  --ease:          cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-ui);
+  background: var(--ivory);
+  color: var(--brown);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── UTILITIES ─────────────────────── */
+.section-wrap  { padding: 4.5rem 2rem; }
+.section-inner { max-width: 860px; margin: 0 auto; }
+.section-label {
+  display: block;
+  font-size: 0.67rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--poppy); margin-bottom: 0.3rem;
+}
+.section-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.85rem, 4vw, 2.6rem);
+  font-weight: 400; line-height: 1.15; color: var(--brown);
+  margin-bottom: 0.3rem;
+}
+.section-title em { font-style: italic; color: var(--fuchsia); }
+.ornament {
+  display: block; margin: 0.4rem 0 1.5rem;
+  color: var(--brown-light); font-size: 0.8rem; letter-spacing: 0.5em;
+}
+.link-text {
+  display: inline-block; margin-top: 0.5rem;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--poppy); text-decoration: none;
+  border-bottom: 1px solid var(--rose);
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.link-text:hover { color: var(--brown); border-color: var(--brown-light); }
+
+/* ── NAV ───────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(245,240,230,0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(192,86,42,0.12);
+  padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px;
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(92,51,37,0.08); }
+.nav-brand {
+  font-family: var(--font-title); font-style: italic;
+  font-size: 1.15rem; color: var(--brown); letter-spacing: 0.04em;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: var(--font-ui); font-size: 0.7rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--brown-mid); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--poppy); }
+@media(max-width:760px) { nav { display: none; } }
+
+/* ── HERO ──────────────────────────── */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 5rem 2rem 4rem;
+  position: relative; overflow: hidden;
+  background: var(--cream);
+}
+.hero-floral {
+  position: absolute; top: 0; left: 0; right: 0; height: 320px;
+  background: url('partecipazione.jpg') center top / cover no-repeat;
+  mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+  pointer-events: none;
+}
+.hero-body { position: relative; z-index: 2; margin-top: 8rem; }
+
+.hero-eyebrow {
+  font-family: var(--font-body); font-style: italic;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem); color: var(--brown-mid);
+  margin-bottom: 0.75rem;
+  animation: fadeUp 0.9s var(--ease) both;
+}
+.hero-names {
+  font-family: var(--font-title); font-style: italic;
+  font-size: clamp(3.5rem, 11vw, 7.5rem);
+  font-weight: 400; line-height: 0.95; color: var(--brown);
+  animation: fadeUp 0.9s 0.12s var(--ease) both;
+}
+.hero-rule {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; margin: 1.25rem auto;
+  animation: fadeUp 0.9s 0.22s var(--ease) both;
+}
+.hero-rule::before, .hero-rule::after {
+  content: ''; width: 50px; height: 1px; background: var(--rose);
+}
+.hero-rule-dot { color: var(--poppy); font-size: 0.5rem; }
+.hero-date-month {
+  font-family: var(--font-body); font-style: italic;
+  font-size: 1.2rem; color: var(--brown-mid);
+  animation: fadeUp 0.9s 0.3s var(--ease) both;
+}
+.hero-date-linear {
+  font-family: var(--font-body); font-style: italic;
+  font-size: clamp(1.25rem, 3vw, 1.75rem); color: var(--brown-mid);
+  letter-spacing: 0.04em; margin-top: 0.4rem;
+  animation: fadeUp 0.9s 0.3s var(--ease) both;
+}
+.hero-date-row {
+  display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+  margin-top: 0.4rem;
+  animation: fadeUp 0.9s 0.36s var(--ease) both;
+}
+.hero-pill {
+  font-family: var(--font-ui); font-size: 0.68rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--brown-light); padding: 0.2rem 0.75rem;
+  border: 1px solid var(--rose);
+}
+.hero-day-num {
+  font-family: var(--font-title); font-size: 2.5rem;
+  font-weight: 400; color: var(--brown);
+}
+.hero-location {
+  font-family: var(--font-ui); font-size: 0.85rem;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--brown-light); margin-top: 0.5rem;
+  animation: fadeUp 0.9s 0.42s var(--ease) both;
+}
+
+/* countdown */
+.hero-countdown {
+  display: flex; gap: 1.5rem; justify-content: center;
+  margin: 1.5rem 0 1.25rem;
+  animation: fadeUp 0.9s 0.48s var(--ease) both;
+}
+.cd-unit { text-align: center; }
+.cd-num {
+  font-family: var(--font-title); font-size: 1.9rem; font-weight: 400;
+  color: var(--brown); line-height: 1;
+}
+.cd-label {
+  font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--brown-light); margin-top: 0.2rem;
+}
+.cd-sep { display: none; }
+
+.hero-cta { animation: fadeUp 0.9s 0.56s var(--ease) both; }
+.btn {
+  display: inline-block; padding: 0.85rem 2.8rem;
+  font-family: var(--font-ui); font-size: 0.72rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  border: 1.5px solid var(--poppy);
+  color: var(--poppy); background: transparent; border-radius: 8px;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), transform 0.2s;
+}
+.btn:hover { background: var(--poppy); color: white; transform: translateY(-1px); }
+.btn-filled { background: var(--poppy); color: white; }
+.btn-filled:hover { background: var(--brown); border-color: var(--brown); }
+
+.scroll-hint {
+  position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--brown-light);
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  z-index: 3; pointer-events: none;
+}
+.scroll-line { width: 1px; height: 32px; background: var(--rose); animation: pulse 1.8s ease infinite; }
+
+.story-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem; align-items: center; margin-top: 2rem;
+}
+@media(max-width:680px) { .story-layout { grid-template-columns: 1fr; gap: 2rem; } }
+.story-photo-wrap { position: relative; }
+.story-photo {
+  width: 100%; aspect-ratio: 3/4;
+  object-fit: cover; object-position: center top;
+  border-radius: 8px; display: block;
+}
+.story-photo-caption {
+  position: absolute; bottom: -0.75rem; right: -0.75rem;
+  background: var(--poppy); color: white;
+  font-family: var(--font-body); font-style: italic;
+  font-size: 0.85rem; padding: 0.4rem 0.9rem; line-height: 1.3;
+}
+.story-text-col {}
+.story-body {
+  font-family: var(--font-body); font-size: 1.1rem;
+  line-height: 1.85; color: var(--brown-mid);
+}
+.story-body p { margin-bottom: 0.75rem; }
+.story-pull {
+  font-family: var(--font-title); font-style: italic;
+  font-size: 1.05rem;
+  color: var(--fuchsia); line-height: 1.5;
+  border-left: 2px solid var(--fuchsia-lt);
+  padding-left: 1.25rem; margin: 1.25rem 0;
+}
+
+/* PALETTE inline (dentro card dress code) */
+.palette-row--inline {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.4rem; margin-top: 0.75rem;
+}
+@media(max-width: 680px) {
+  .palette-row--inline { grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+}
+.palette-row--inline .palette-swatch {
+  width: 100%; aspect-ratio: 1; border-radius: 50%;
+  transition: transform 0.25s var(--ease);
+}
+.palette-row--inline .palette-swatch:hover { transform: scale(1.18); }
+
+/* ── INFO 2x2 GRID ─────────────────── */
+#notes { background: var(--ivory-warm); }
+.grid-2x2 {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.25rem; margin-top: 2rem;
+}
+@media(max-width:600px) { .grid-2x2 { grid-template-columns: 1fr; } }
+.info-card {
+  background: var(--cream); padding: 1.5rem 1.5rem;
+  border-top: 3px solid var(--rose);
+  border-radius: 0 0 10px 10px;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.info-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(92,51,37,0.09); }
+.info-card:nth-child(2) { border-top-color: var(--fuchsia-lt); }
+.info-card:nth-child(3) { border-top-color: var(--poppy-lt); }
+.info-card:nth-child(4) { border-top-color: var(--brown-mid); }
+.info-icon { font-size: 1.4rem; margin-bottom: 0.5rem; line-height: 1; }
+.info-title { font-family: var(--font-title); font-size: 1.1rem; font-weight: 400; color: var(--brown); margin-bottom: 0.35rem; }
+.info-body { font-size: 0.87rem; color: var(--brown-mid); line-height: 1.7; }
+
+/* ── PROGRAMMA ─────────────────────── */
+#schedule { background: var(--cream); }
+.day-label {
+  font-size: 0.67rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--poppy); margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.day-label::after { content: ''; flex: 1; height: 1px; background: var(--rose); }
+.brunch-box .day-label::after { display: none; }
+.brunch-box { text-align: center; }
+.timeline { display: flex; flex-direction: column; margin-bottom: 1.75rem; position: relative; }
+.tl-item {
+  display: grid;
+  grid-template-columns: 58px 20px 1fr;
+  gap: 0 1rem;
+  padding-bottom: 1.5rem;
+  align-items: center;
+  position: relative;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-time {
+  font-family: var(--font-body); font-style: italic;
+  font-size: 1.25rem; color: var(--brown-mid);
+  text-align: right;
+}
+.tl-spine {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  width: 20px;
+}
+.tl-dot {
+  position: relative; z-index: 1;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--poppy);
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease);
+}
+.tl-item:hover .tl-dot { transform: scale(1.4); }
+.tl-event { font-family: var(--font-ui); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; color: var(--brown); }
+.tl-detail { font-size: 0.82rem; color: var(--brown-mid); margin-top: 0.15rem; line-height: 1.6; }
+.tl-detail a { color: var(--sage); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.tl-detail a:hover { border-color: var(--sage); }
+
+/* brunch box */
+.brunch-box {
+  background: var(--ivory-warm);
+  border-left: 3px solid var(--fuchsia-lt);
+  border-radius: 0 8px 8px 0;
+  padding: 1.25rem 1.5rem; margin-top: 1rem;
+  text-align: left;
+}
+.brunch-title { font-family: var(--font-title); font-size: 1.1rem; font-style: italic; color: var(--fuchsia); margin-bottom: 0.4rem; }
+.brunch-body { font-size: 0.85rem; color: var(--brown-mid); line-height: 1.7; }
+
+/* ── DOVE DORMIRE 2x2 ──────────────── */
+#accommodation { background: var(--ivory-warm); }
+.acc-intro { font-size: 0.9rem; color: var(--brown-mid); max-width: 580px; margin-bottom: 0.5rem; }
+.acc-card {
+  background: var(--cream);
+  padding: 1.5rem;
+  border-top: 3px solid var(--rose);
+  border-radius: 0 0 10px 10px;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.acc-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(92,51,37,0.09); }
+.acc-card:nth-child(2) { border-top-color: var(--fuchsia-lt); }
+.acc-card:nth-child(3) { border-top-color: var(--poppy-lt); }
+.acc-card:nth-child(4) { border-top-color: var(--brown-light); }
+.acc-name { font-family: var(--font-title); font-size: 1.1rem; font-weight: 400; color: var(--brown); margin-bottom: 0.3rem; }
+.acc-dist { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.4rem; }
+.acc-body { font-size: 0.87rem; color: var(--brown-mid); line-height: 1.7; }
+.acc-footer-note { margin-top: 1.5rem; font-size: 0.88rem; color: var(--brown-mid); line-height: 1.75; }
+
+/* ── COME ARRIVARE ─────────────────── */
+#directions { background: var(--cream); }
+.location-block { margin-bottom: 2rem; }
+.location-head {
+  font-size: 0.67rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--poppy); margin-bottom: 0.85rem; padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rose);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.dir-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+@media(max-width:580px) { .dir-grid { grid-template-columns: 1fr; } }
+.dir-card {
+  background: var(--ivory-warm);
+  padding: 1.25rem;
+  border-radius: 0 0 10px 10px;
+}
+.dir-card {
+  border-top: 3px solid var(--rose);
+}
+.location-block:nth-of-type(1) .dir-card:nth-child(1) {
+  border-top-color: var(--poppy-lt);
+}
+
+.location-block:nth-of-type(1) .dir-card:nth-child(2) {
+  border-top-color: var(--fuchsia-lt);
+}
+
+.location-block:nth-of-type(2) .dir-card {
+  border-top-color: var(--sage);
+}
+.dir-title {
+  font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--brown-mid); margin-bottom: 0.6rem;
+}
+.dir-body { font-size: 0.9rem; color: var(--brown-mid); line-height: 1.8; }
+.dir-body strong { color: var(--brown); font-weight: 500; }
+
+/* ── RSVP ──────────────────────────── */
+#rsvp { background: var(--ivory-warm); }
+.rsvp-intro {
+  font-family: var(--font-body); font-style: italic;
+  font-size: 1rem; color: var(--brown-mid); margin-bottom: 1.25rem;
+}
+/* form shell */
+.rsvp-form {
+  max-width: 520px;
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(192,86,42,0.14);
+}
+.form-row { margin-bottom: 0.9rem; }
+.form-label {
+  display: block; font-family: var(--font-ui);
+  font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--brown-light); margin-bottom: 0.3rem;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 0.6rem 0.85rem;
+  border: 1.5px solid rgba(192,86,42,0.2);
+  border-radius: 6px;
+  background: var(--ivory); color: var(--brown);
+  font-family: var(--font-ui); font-size: 0.88rem; font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--poppy);
+  box-shadow: 0 0 0 3px rgba(192,86,42,0.09);
+}
+.form-textarea { min-height: 72px; resize: vertical; }
+.attend-row { display: flex; gap: 0.75rem; margin-top: 0.3rem; }
+.attend-opt { flex: 1; }
+.attend-opt input[type=radio] { display: none; }
+.attend-opt label {
+  display: block; padding: 0.55rem 0.5rem;
+  border: 1.5px solid rgba(192,86,42,0.2);
+  border-radius: 6px;
+  text-align: center; cursor: pointer;
+  font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--brown-mid); background: var(--ivory);
+  transition: all 0.22s var(--ease);
+}
+.attend-opt input[type=radio]:checked + label {
+  background: var(--poppy); color: white; border-color: var(--poppy);
+}
+
+/* multi-persona */
+.guest-separator {
+  border: none; border-top: 1px dashed rgba(192,86,42,0.18);
+  margin: 1rem 0;
+}
+.person-block { margin-bottom: 0.5rem; }
+.person-header {
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--brown-light); margin-bottom: 0.6rem;
+  border-bottom: none;
+}
+.btn-add-guest {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-ui); font-size: 0.68rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--sage); cursor: pointer; background: none; border: none;
+  padding: 0; margin-bottom: 1rem;
+  transition: color 0.2s;
+}
+.btn-add-guest:hover { color: var(--brown); }
+.btn-add-guest svg { width: 13px; height: 13px; }
+.btn-remove {
+  font-size: 0.65rem; color: var(--brown-light); cursor: pointer;
+  background: none; border: none; margin-left: 0.5rem;
+  transition: color 0.2s;
+}
+.btn-remove:hover { color: var(--brown); }
+
+/* submit */
+.submit-btn {
+  width: 100%; padding: 0.85rem;
+  background: var(--poppy); color: white; border: none; cursor: pointer;
+  font-family: var(--font-ui); font-size: 0.72rem;
+  letter-spacing: 0.25em; text-transform: uppercase; font-weight: 400;
+  border-radius: 8px;
+  transition: background 0.25s var(--ease), transform 0.2s;
+  margin-top: 0.25rem;
+}
+.submit-btn:hover { background: var(--brown); transform: translateY(-1px); }
+.submit-btn:active { transform: translateY(0); }
+
+/* success */
+.success-msg {
+  display: none; text-align: center;
+  padding: 4rem 1rem; max-width: 500px; margin: 0 auto;
+}
+.success-msg.show { display: block; }
+.success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.success-msg h3 {
+  font-family: var(--font-title); font-style: italic;
+  font-size: 2.2rem; color: var(--poppy); margin-bottom: 0.75rem;
+}
+.success-msg p { color: var(--brown-mid); font-size: 0.95rem; }
+
+/* ── REGALO ────────────────────────── */
+#gift { background: var(--cream); position: relative; overflow: hidden; }
+.gift-floral {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 260px;
+  background: url('regalo.jpg') center bottom / cover no-repeat;
+  mask-image: linear-gradient(to top, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 50%, transparent 100%);
+  pointer-events: none;
+}
+.gift-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem; align-items: center;
+  position: relative; z-index: 1;
+  padding-bottom: 13rem;
+}
+@media(max-width:680px) { .gift-layout { grid-template-columns: 1fr; gap: 1.5rem; padding-bottom: 11rem; } }
+.gift-text-col {}
+.gift-quote {
+  font-family: var(--font-body); font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--brown); line-height: 1.85; margin-bottom: 1.25rem;
+}
+.gift-note { font-size: 0.87rem; color: var(--brown-mid); line-height: 1.7; }
+.gift-photo-col {
+  display: flex; align-items: center; justify-content: center;
+}
+.gift-photo {
+  width: 100%; max-width: 300px;
+  aspect-ratio: 4/5; object-fit: cover;
+  border-radius: 8px; display: block;
+}
+.iban-box {
+  margin-top: 1.75rem;
+  background: var(--ivory-warm);
+  border: none;
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  text-align: center;
+  display: inline-block;
+  max-width: 100%;
+}
+.iban-bank-label {
+  font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--brown-light); margin-bottom: 0.5rem; display: block;
+}
+.iban-name {
+  font-family: var(--font-body); font-style: italic;
+  font-size: 1.05rem; color: var(--brown); margin-bottom: 0.4rem;
+}
+.iban-number {
+  font-family: var(--font-ui); font-size: 0.9rem; font-weight: 400;
+  color: var(--brown-mid); letter-spacing: 0.06em;
+  margin-bottom: 1rem; word-break: break-all;
+}
+.iban-copy-btn {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-family: var(--font-ui); font-size: 0.68rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--poppy); background: none;
+  border: 1.5px solid var(--poppy);
+  border-radius: 4px;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.iban-copy-btn:hover { background: var(--poppy); color: white; }
+.iban-copy-btn.copied { background: var(--sage); border-color: var(--sage); color: white; }
+/* legacy rows (not used anymore but kept for safety) */
+.iban-label { display: none; }
+.iban-row { display: none; }
+.iban-field { display: none; }
+.iban-value { display: none; }
+
+/* ── FOOTER ────────────────────────── */
+footer {
+  background: var(--brown); text-align: center; padding: 2.5rem 2rem;
+  color: rgba(245,240,230,0.4);
+}
+.footer-names {
+  font-family: var(--font-title); font-style: italic;
+  font-size: 1.5rem; color: rgba(245,240,230,0.9);
+  margin-bottom: 0.3rem;
+}
+.footer-date { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; }
+.footer-sub {
+  margin-top: 0.5rem;
+  font-family: var(--font-body); font-style: italic;
+  font-size: 0.9rem; color: rgba(245,240,230,0.3);
+}
+
+/* ── ANIMATIONS ────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%,100% { opacity: 0.25; transform: scaleY(0.85); }
+  50%      { opacity: 1;    transform: scaleY(1); }
+}
+
+/* scroll-reveal */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ════════════════════════════════════ -->
+<nav id="main-nav">
+  <span class="nav-brand">Silvia & Remo</span>
+  <ul class="nav-links">
+    <li><a href="#story">La storia</a></li>
+    <li><a href="#notes">Informazioni utili</a></li>
+    <li><a href="#schedule">Programma</a></li>
+    <li><a href="#accommodation">Alloggio</a></li>
+    <li><a href="#directions">Come arrivare</a></li>
+    <li><a href="#rsvp">RSVP</a></li>
+    <li><a href="#gift">Dono</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ═══════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-floral"></div>
+  <div class="hero-body">
+    <p class="hero-eyebrow">Ci sposiamo!</p>
+    <h1 class="hero-names">Silvia e Remo</h1>
+    <div class="hero-rule"><span class="hero-rule-dot">✦</span></div>
+    <p class="hero-date-linear">13 Settembre 2026</p>
+    <p class="hero-location">Castell'Arquato</p>
+
+    <div class="hero-countdown" id="countdown">
+      <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-label">giorni</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-hours">—</div><div class="cd-label">ore</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-min">—</div><div class="cd-label">min</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-sec">—</div><div class="cd-label">sec</div></div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#rsvp" class="btn btn-filled">Rispondi all'invito</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══ STORIA ══════════════════════════════════ -->
+<section id="story" class="section-wrap">
+  <div class="section-inner">
+    <span class="section-label reveal">La nostra storia</span>
+    <h2 class="section-title reveal">Finalmente <em>ufficiale</em></h2>
+    <span class="ornament reveal">✦ ✦ ✦</span>
+
+    <div class="story-layout">
+      <div class="story-photo-wrap reveal">
+        <img src="foto-sposi.jpeg" alt="Silvia e Remo" class="story-photo">
+        
+      </div>
+      <div class="story-text-col">
+        <div class="story-body reveal reveal-delay-1">
+          <p>Dopo dieci anni insieme, ci sposiamo.</p>
+          <p>In questo tempo abbiamo costruito la nostra vita passo dopo passo, crescendo insieme e diventando una famiglia.</p>
+          <p>Il 13 settembre vi aspettiamo per festeggiare con le persone a cui vogliamo bene: una giornata fatta di incontri, sorrisi e festa.</p>
+        </div>
+        <p class="story-pull reveal reveal-delay-2">
+          Abbiamo scelto un luogo che fa parte della nostra storia e ci unisce.
+        </p>
+        <div class="story-body reveal reveal-delay-3">
+          <p>La cerimonia si terrà nel cuore del borgo, al Palazzo del Podestà, e i festeggiamenti continueranno tra le colline della Val d'Arda, al Podere Palazzo Illica.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ DA SAPERE 2×2 ═══════════════════════════ -->
+<section id="notes" class="section-wrap">
+  <div class="section-inner">
+    <span class="section-label reveal">Da sapere</span>
+    <h2 class="section-title reveal">Informazioni <em>utili</em></h2>
+    <span class="ornament reveal">✦ ✦ ✦</span>
+    <div class="grid-2x2">
+      <div class="info-card reveal">
+        <div class="info-icon">👗</div>
+        <p class="info-title">Dress code</p>
+        <p class="info-body">Nessun dress code. Se vi va, potete ispirarvi ai colori dei nostri fiori — venite come vi sentite a vostro agio.</p>
+        <div class="palette-row palette-row--inline">
+	  <div class="palette-swatch" style="background:#7a4a35;" title="Marrone caldo"></div>
+          <div class="palette-swatch" style="background:#c0562a;" title="Papavero"></div>
+          <div class="palette-swatch" style="background:#e0855a;" title="Arancio"></div>
+          <div class="palette-swatch" style="background:#b83670;" title="Fucsia"></div>
+          <div class="palette-swatch" style="background:#d4789a;" title="Rosa caldo"></div>
+          <div class="palette-swatch" style="background:#eac4ce;border:1px solid #ddbcc8;" title="Rosa chiaro"></div>
+          <div class="palette-swatch" style="background:#f5f0e6;border:1px solid #e0d6c8;" title="Avorio"></div>
+          <div class="palette-swatch" style="background:#6e8b5e;" title="Verde salvia"></div>
+        </div>
+      </div>
+      <div class="info-card reveal reveal-delay-1">
+        <div class="info-icon">👠</div>
+        <p class="info-title">Scarpe comode</p>
+        <p class="info-body">Elegante ma comodo: il ricevimento è in una tenuta di campagna con giardino e cortile. Tacchi benvenuti, ma tenetevi un piano B!</p>
+      </div>
+      <div class="info-card reveal reveal-delay-2">
+        <div class="info-icon">☀️</div>
+        <p class="info-title">Meteo di settembre</p>
+        <p class="info-body">A Castell'Arquato settembre è ancora splendido: giornate calde (22–27°C) e serate fresche sulle colline piacentine. Portate una giacca leggera o una stola per il tramonto!</p>
+      </div>
+      <div class="info-card reveal reveal-delay-3">
+        <div class="info-icon">👶</div>
+        <p class="info-title">Aurora vi aspetta!</p>
+        <p class="info-body">I bambini sono assolutamente benvenuti! Per noi è una giornata da condividere con tutte le persone importanti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROGRAMMA ════════════════════════════════ -->
+<section id="schedule" class="section-wrap">
+  <div class="section-inner">
+    <span class="section-label reveal">La giornata</span>
+    <h2 class="section-title reveal">Il <em>programma</em></h2>
+    <span class="ornament reveal">✦ ✦ ✦</span>
+
+    <p class="day-label reveal">Domenica 13 settembre 2026</p>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <span class="tl-time">11:30</span>
+        <div class="tl-spine"><div class="tl-dot"></div></div>
+        <div>
+          <p class="tl-event">Cerimonia</p>
+          <p class="tl-detail">Palazzo del Podestà — Via Sforza Caolzio 1, Castell'Arquato (PC)<br>
+            <a href="https://maps.google.com/?q=Palazzo+del+Podestà+Via+Sforza+Caolzio+1+Castell+Arquato" target="_blank">Apri in Google Maps →</a>
+          </p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-1">
+        <span class="tl-time">13:00</span>
+        <div class="tl-spine"><div class="tl-dot"></div></div>
+        <div>
+          <p class="tl-event">Pranzo & Festeggiamenti</p>
+          <p class="tl-detail">Podere Palazzo Illica — Via Canale 5, San Lorenzo (PC)<br>
+            <a href="https://maps.google.com/?q=Via+Canale+5+San+Lorenzo+Castell+Arquato" target="_blank">Apri in Google Maps →</a>
+          </p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-2">
+        <span class="tl-time">18:00</span>
+        <div class="tl-spine"><div class="tl-dot"></div></div>
+        <div>
+          <p class="tl-event">Taglio torta</p>
+          <p class="tl-detail">Nella splendida corte del podere, tra le colline della Val d'Arda</p>
+        </div>
+      </div>
+      <div class="tl-item reveal reveal-delay-3">
+        <span class="tl-time">22:00</span>
+        <div class="tl-spine"><div class="tl-dot"></div></div>
+        <div>
+          <p class="tl-event">E vissero felici e contenti</p>
+          <p class="tl-detail">Balli, musica e brindisi fino a notte fonda</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRUNCH -->
+    <div class="brunch-box reveal">
+      <p class="brunch-title">Vi va di unirvi a noi per un brunch?</p>
+      <p class="brunch-body" style="margin-bottom:0.5rem;"><strong style="color:var(--brown);">Lunedì 14 settembre 2026, ore 10:30</strong></p>
+      <p class="brunch-body">Per chi ha voglia di continuare a festeggiare, ci sarà un brunch al Podere Palazzo Illica il giorno dopo.<br> È informale e facoltativo.<br>Se vi va di partecipare, fatecelo sapere entro il 15 luglio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DOVE DORMIRE 2×2 ═════════════════════════ -->
+<section id="accommodation" class="section-wrap">
+  <div class="section-inner">
+    <span class="section-label reveal">Per chi viene da lontano</span>
+    <h2 class="section-title reveal">Dove <em>dormire</em></h2>
+    <span class="ornament reveal">✦ ✦ ✦</span>
+    <p class="acc-intro reveal">Chi viene da fuori può approfittarne per un weekend nella bellissima Val d'Arda. Ecco alcune strutture consigliate.</p>
+    <div class="grid-2x2" style="margin-top:2rem;">
+      <div class="acc-card reveal">
+        <p class="acc-name">Podere Palazzo Illica</p>
+        <p class="acc-dist">Sede del ricevimento · San Lorenzo (PC)</p>
+        <p class="acc-body">Lo stesso splendido palazzo del '600 dove si svolge il ricevimento ospita camere con bagno privato e colazione inclusa. La scelta più comoda per vivere la giornata senza preoccupazioni!</p>
+        <a href="https://www.podereillica.com/" class="link-text" target="_blank">podereillica.com →</a>
+      </div>
+      <div class="acc-card reveal reveal-delay-1">
+        <p class="acc-name">B&B Villa Dircea</p>
+        <p class="acc-dist">Castell'Arquato · ~ 2 km dalla cerimonia</p>
+        <p class="acc-body">Ai piedi del borgo medievale, in una villa elegante e rilassante. Posizione ottima per esplorare Castell'Arquato a piedi la mattina prima della cerimonia.</p>
+        <a href="https://www.villadircea.it/" class="link-text" target="_blank">villadircea.it →</a>
+      </div>
+      <div class="acc-card reveal reveal-delay-2">
+        <p class="acc-name">Agriturismo Podere Le Lame</p>
+        <p class="acc-dist">Vernasca · ~ 7 km</p>
+        <p class="acc-body">8 camere confortevoli con vista sulla vallata, colazione inclusa. Perfetto per chi ama la campagna e vuole rilassarsi il giorno dopo, o il giorno prima.</p>
+        <a href="https://www.poderelelame.it/" class="link-text" target="_blank">poderelelame.it →</a>
+      </div>
+      <div class="acc-card reveal reveal-delay-3">
+        <p class="acc-name">Fiorenzuola d'Arda</p>
+        <p class="acc-dist">~ 9 km · Ottimi collegamenti</p>
+        <p class="acc-body">A Fiorenzuola troverete hotel e B&B a tutti i prezzi, buoni ristoranti e comoda fermata autostradale. Buona opzione per chi vuole più scelta.</p>
+      </div>
+    </div>
+    <p class="acc-footer-note reveal">Tutte le strutture ricettive della zona: <a href="https://castellarquatoturismo.it/dovedormire/" class="link-text" target="_blank">castellarquatoturismo.it →</a><br>Ovviamente, chiedeteci per qualsiasi cosa: possiamo consigliarvi!</p>
+  </div>
+</section>
+
+<!-- ══ COME ARRIVARE ════════════════════════════ -->
+<section id="directions" class="section-wrap">
+  <div class="section-inner">
+    <span class="section-label reveal">Logistica</span>
+    <h2 class="section-title reveal">Come <em>arrivare</em></h2>
+    <span class="ornament reveal">✦ ✦ ✦</span>
+
+    <div class="location-block reveal">
+      <p class="location-head">📍 Cerimonia — Palazzo del Podestà, Castell'Arquato</p>
+      <div class="dir-grid">
+        <div class="dir-card">
+          <p class="dir-title">🚗 In auto da Varese / Milano</p>
+          <p class="dir-body">Autostrada <strong>A1 Milano–Bologna</strong>, uscita <strong>Fiorenzuola d'Arda</strong>. Da lì seguire indicazioni per Castell'Arquato (circa 10 min).<br>Navigatore: <em>Via Sforza Caolzio 1, Castell'Arquato (PC).</em></p>
+          <a href="https://maps.google.com/?q=Via+Sforza+Caolzio+1+Castell+Arquato+PC" class="link-text" target="_blank">Apri in Google Maps →</a>
+        </div>
+        <div class="dir-card">
+          <p class="dir-title">🅿️ Parcheggio cerimonia</p>
+          <p class="dir-body">Il centro storico è in zona ZTL. Il parcheggio più comodo e gratuito è il <strong>P4 in Via Antonio Vassalli 86</strong> (sopra il cimitero). Da lì una breve passeggiata di 5 minuti tra le vie del borgo fino al Palazzo del Podestà.</p>
+          <a href="https://www.google.com/maps/place/P4+-+Free+Parking/@44.849399,9.8627155,19.54z" class="link-text" target="_blank">Apri in Google Maps →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="location-block reveal">
+      <p class="location-head">📍 Ricevimento — Podere Palazzo Illica, San Lorenzo</p>
+      <div class="dir-grid">
+        <div class="dir-card">
+          <p class="dir-title">🚗 In auto</p>
+          <p class="dir-body">Navigatore: <em>Via Canale 5, San Lorenzo, Castell'Arquato (PC).</em> Il podere si trova a circa 4 km dal centro. Ampio parcheggio disponibile in loco.</p>
+          <a href="https://maps.google.com/?q=Via+Canale+5+San+Lorenzo+Castell+Arquato" class="link-text" target="_blank">Apri in Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RSVP ════════════════════════════════════ -->
+<section id="rsvp" class="section-wrap">
+  <div class="section-inner">
+    <span class="section-label reveal">Conferma la tua presenza</span>
+    <h2 class="section-title reveal"><em>RSVP</em></h2>
+    <span class="ornament reveal">✦ ✦ ✦</span>
+    <p class="rsvp-intro reveal">Vi preghiamo di confermare la vostra partecipazione entro il <strong>15 Luglio 2026</strong>.</p>
+
+    <!-- NETLIFY FORM -->
+    <form name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+          class="rsvp-form reveal" id="rsvp-form" onsubmit="handleSubmit(event)">
+      <input type="hidden" name="form-name" value="rsvp">
+      <p style="display:none;"><input name="bot-field"></p>
+      <!-- Campi nascosti per Netlify pre-rendering (persona 2–5) -->
+      <p style="display:none;">
+        <input name="nome_2"><input name="presenza_2"><input name="dieta_2">
+        <input name="nome_3"><input name="presenza_3"><input name="dieta_3">
+        <input name="nome_4"><input name="presenza_4"><input name="dieta_4">
+        <input name="nome_5"><input name="presenza_5"><input name="dieta_5">
+      </p>
+
+      <!-- PERSONA 1 sempre visibile -->
+      <div class="person-block" id="guest-0">
+        <p class="person-header">Invitato 1</p>
+        <div class="form-row">
+          <label class="form-label">Nome e Cognome </label>
+          <input type="text" name="nome_1" class="form-input" placeholder="Nome completo" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Parteciperai?</label>
+          <div class="attend-row">
+            <div class="attend-opt">
+              <input type="radio" name="presenza_1" id="yes-1" value="sì" required>
+              <label for="yes-1">🎉 Sì, ci sarò!</label>
+            </div>
+            <div class="attend-opt">
+              <input type="radio" name="presenza_1" id="no-1" value="no">
+              <label for="no-1">😢 Purtroppo no</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Preferenze alimentari</label>
+          <select name="dieta_1" class="form-select">
+            <option value="nessuna">Nessuna / Standard</option>
+            <option value="vegetariano">Vegetariano/a</option>
+            <option value="vegano">Vegano/a</option>
+            <option value="senza_glutine">Senza glutine</option>
+            <option value="allergie">Allergie specifiche (specifica nel messaggio)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Ospiti aggiuntivi (JS) -->
+      <div id="extra-guests"></div>
+
+      <button type="button" class="btn-add-guest" onclick="addGuest()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="8" cy="8" r="7"/><line x1="8" y1="5" x2="8" y2="11"/><line x1="5" y1="8" x2="11" y2="8"/>
+        </svg>
+        Aggiungi un'altra persona
+      </button>
+
+      <div class="form-row">
+        <label class="form-label">Un messaggio per gli sposi</label>
+        <textarea name="messaggio" class="form-textarea" placeholder="Auguri, richieste speciali, o semplicemente un pensiero…"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Invia conferma ✦</button>
+    </form>
+
+    <div class="success-msg" id="success-msg">
+      <div class="success-icon">🌸</div>
+      <h3>Grazie mille!</h3>
+      <p>La vostra conferma è stata ricevuta.<br>Non vediamo l'ora di festeggiare con voi!</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REGALO ══════════════════════════════════ -->
+<section id="gift" class="section-wrap">
+  <div class="section-inner">
+    <span class="section-label reveal">Un pensiero per il futuro</span>
+    <h2 class="section-title reveal">Il dono <em>più bello</em></h2>
+    <span class="ornament reveal">✦ ✦ ✦</span>
+
+    <div class="gift-layout">
+      <div class="gift-text-col reveal">
+        <p class="gift-quote">
+          Il regalo più prezioso per noi è la vostra presenza in questo giorno.
+        </p>
+        <p class="gift-note">
+          Se desiderate farci un dono, sarà per noi un piacere poterlo custodire come contributo ai nostri progetti futuri.<br><br>
+          Con il tempo, ci piacerebbe iniziare a sognare e organizzare un grande viaggio da vivere insieme, come famiglia, quando Aurora sarà un po' più grande.
+        </p>
+        <div class="iban-box">
+          <div class="iban-bank-label">💳 Banca Widiba</div>
+          <div class="iban-name">Bagatella Silvia, Remo Ravazzola</div>
+          <div class="iban-number" id="iban-value">IT91H034421600000000018776860</div>
+          <button class="iban-copy-btn" onclick="copyIban()" id="copy-btn">
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
+              <rect x="7" y="7" width="10" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M13 7V5a1.5 1.5 0 00-1.5-1.5H4A1.5 1.5 0 002.5 5v8A1.5 1.5 0 004 14.5h2" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            Copia IBAN
+          </button>
+        </div>
+      </div>
+      <div class="gift-photo-col reveal reveal-delay-1">
+        <img src="foto-famiglia.jpeg" alt="Silvia, Remo e Aurora" class="gift-photo">
+      </div>
+    </div>
+  </div>
+  <div class="gift-floral"></div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════ -->
+<footer>
+  <p class="footer-names">Silvia e Remo</p>
+  <p class="footer-date">13 · 09 · 2026 · Castell'Arquato</p>
+  <p class="footer-sub">* </p>
+</footer>
+
+<script>
+/* ── COUNTDOWN ──────────────────────────── */
+function updateCountdown() {
+  var target = new Date('2026-09-13T11:30:00');
+  var now = new Date();
+  var diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('countdown').innerHTML = '<p style="font-family:var(--font-body);font-style:italic;color:var(--fuchsia);font-size:1.2rem;">È il giorno più bello! 🎉</p>';
+    return;
+  }
+  var d = Math.floor(diff / 86400000);
+  var h = Math.floor((diff % 86400000) / 3600000);
+  var m = Math.floor((diff % 3600000) / 60000);
+  var s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-min').textContent   = String(m).padStart(2,'0');
+  document.getElementById('cd-sec').textContent   = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ── NAV SCROLL SHADOW ───────────────────── */
+window.addEventListener('scroll', function() {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* ── SCROLL REVEAL ───────────────────────── */
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el) { io.observe(el); });
+})();
+
+/* ── COPY IBAN ───────────────────────── */
+function copyIban() {
+  var iban = document.getElementById('iban-value').textContent.trim();
+  var btn = document.getElementById('copy-btn');
+  navigator.clipboard.writeText(iban).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15"><path d="M4 10l5 5 7-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Copiato!';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15"><rect x="7" y="7" width="10" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 7V5a1.5 1.5 0 00-1.5-1.5H4A1.5 1.5 0 002.5 5v8A1.5 1.5 0 004 14.5h2" stroke="currentColor" stroke-width="1.5"/></svg> Copia IBAN';
+    }, 2500);
+  }).catch(function() {
+    /* Fallback per browser senza clipboard API */
+    var el = document.createElement('textarea');
+    el.value = iban;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    btn.classList.add('copied');
+    btn.textContent = '✓ Copiato!';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15"><rect x="7" y="7" width="10" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M13 7V5a1.5 1.5 0 00-1.5-1.5H4A1.5 1.5 0 002.5 5v8A1.5 1.5 0 004 14.5h2" stroke="currentColor" stroke-width="1.5"/></svg> Copia IBAN';
+    }, 2500);
+  });
+}
+
+/* ── MULTI-GUEST RSVP ────────────────────── */
+var guestCount = 1;
+function addGuest() {
+  guestCount++;
+  var n = guestCount;
+  var container = document.getElementById('extra-guests');
+  var div = document.createElement('div');
+  div.className = 'person-block';
+  div.id = 'guest-' + n;
+  /* FIX NETLIFY: ogni campo ha nome univoco nome_2, nome_3 ecc.
+     Netlify legge i nomi dal form HTML statico per registrarli;
+     i campi dinamici devono avere nomi distinti per essere salvati
+     correttamente. Usando nome_2, presenza_2, dieta_2 il form
+     invia tutti i dati separati anche nella submission Netlify. */
+  div.innerHTML =
+    '<hr class="guest-separator">' +
+    '<p class="person-header">Invitato ' + n +
+      ' <button type="button" class="btn-remove" onclick="removeGuest(this)">✕ rimuovi</button></p>' +
+    '<div class="form-row">' +
+      '<label class="form-label">Nome e Cognome</label>' +
+      '<input type="text" name="nome_' + n + '" class="form-input" placeholder="Nome completo">' +
+    '</div>' +
+    '<div class="form-row">' +
+      '<label class="form-label">Parteciperai?</label>' +
+      '<div class="attend-row">' +
+        '<div class="attend-opt"><input type="radio" name="presenza_' + n + '" id="yes-' + n + '" value="sì"><label for="yes-' + n + '">🎉 Sì, ci sarò!</label></div>' +
+        '<div class="attend-opt"><input type="radio" name="presenza_' + n + '" id="no-' + n + '" value="no"><label for="no-' + n + '">😢 Purtroppo no</label></div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="form-row">' +
+      '<label class="form-label">Preferenze alimentari</label>' +
+      '<select name="dieta_' + n + '" class="form-select">' +
+        '<option value="nessuna">Nessuna / Standard</option>' +
+        '<option value="vegetariano">Vegetariano/a</option>' +
+        '<option value="vegano">Vegano/a</option>' +
+        '<option value="pescetariano">Pescetariano/a</option>' +
+        '<option value="senza_glutine">Senza glutine</option>' +
+        '<option value="allergie">Allergie specifiche (specifica nel messaggio)</option>' +
+      '</select>' +
+    '</div>';
+  container.appendChild(div);
+}
+function removeGuest(btn) {
+  btn.closest('.person-block').remove();
+}
+
+/* ── FORM SUBMIT ─────────────────────────── */
+function handleSubmit(e) {
+  e.preventDefault();
+  var form = document.getElementById('rsvp-form');
+  var data = new FormData(form);
+  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString() })
+    .then(function() {
+      form.style.display = 'none';
+      document.getElementById('success-msg').classList.add('show');
+    })
+    .catch(function() {
+      /* fallback: show success anyway (static preview) */
+      form.style.display = 'none';
+      document.getElementById('success-msg').classList.add('show');
+    });
+}
+</script>
+</body>
+</html>
