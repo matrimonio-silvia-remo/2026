@@ -93,17 +93,20 @@ nav {
   background: rgba(245,240,230,0.94);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(192,86,42,0.12);
-  padding: 0 1.5rem;
-  display: flex; align-items: center; justify-content: center;
+  padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
   height: 56px;
   transition: box-shadow 0.3s;
 }
 nav.scrolled { box-shadow: 0 2px 24px rgba(92,51,37,0.08); }
-.nav-brand { display: none; }
-.nav-links { display: flex; gap: 1.6rem; list-style: none; }
+.nav-brand {
+  font-family: var(--font-title); font-style: italic;
+  font-size: 1.15rem; color: var(--brown); letter-spacing: 0.04em;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
-  font-family: var(--font-ui); font-size: 0.68rem;
-  letter-spacing: 0.16em; text-transform: uppercase;
+  font-family: var(--font-ui); font-size: 0.7rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--brown-mid); text-decoration: none;
   transition: color 0.2s;
 }
@@ -129,8 +132,8 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(92,51,37,0.08); }
 .hero-body { position: relative; z-index: 2; margin-top: 8rem; }
 
 .hero-eyebrow {
-  font-family: var(--font-body); font-style: italic; font-weight: 700;
-  font-size: clamp(1.5rem, 4vw, 2rem); color: var(--brown);
+  font-family: var(--font-body); font-style: italic;
+  font-size: clamp(1.4rem, 5vw, 2rem); color: var(--brown-mid);
   margin-bottom: 0.75rem;
   animation: fadeUp 0.9s var(--ease) both;
 }
@@ -249,9 +252,9 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(92,51,37,0.08); }
 .story-text-col {}
 .story-body {
   font-family: var(--font-body); font-size: 1.1rem;
-  line-height: 1.45; color: var(--brown-mid);
+  line-height: 1.85; color: var(--brown-mid);
 }
-.story-body p { margin-bottom: 0.5rem; }
+.story-body p { margin-bottom: 0.75rem; }
 .story-pull {
   font-family: var(--font-title); font-style: italic;
   font-size: 1.05rem;
@@ -299,13 +302,11 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(92,51,37,0.08); }
 /* ── PROGRAMMA ─────────────────────── */
 #schedule { background: var(--cream); }
 .day-label {
-  font-size: 0.9rem; letter-spacing: 0.25em; text-transform: uppercase;
+  font-size: 0.67rem; letter-spacing: 0.25em; text-transform: uppercase;
   color: var(--poppy); margin-bottom: 1.25rem;
   display: flex; align-items: center; gap: 1rem;
 }
 .day-label::after { content: ''; flex: 1; height: 1px; background: var(--rose); }
-.brunch-box .day-label::after { display: none; }
-.brunch-box { text-align: center; }
 .timeline { display: flex; flex-direction: column; margin-bottom: 1.75rem; position: relative; }
 .tl-item {
   display: grid;
@@ -338,17 +339,6 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(92,51,37,0.08); }
 .tl-detail { font-size: 0.82rem; color: var(--brown-mid); margin-top: 0.15rem; line-height: 1.6; }
 .tl-detail a { color: var(--sage); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
 .tl-detail a:hover { border-color: var(--sage); }
-
-/* brunch box */
-.brunch-box {
-  background: var(--ivory-warm);
-  border-left: 3px solid var(--fuchsia-lt);
-  border-radius: 0 8px 8px 0;
-  padding: 1.25rem 1.5rem; margin-top: 1rem;
-  text-align: left;
-}
-.brunch-title { font-family: var(--font-title); font-size: 1.1rem; font-style: italic; color: var(--fuchsia); margin-bottom: 0.4rem; }
-.brunch-body { font-size: 0.85rem; color: var(--brown-mid); line-height: 1.7; }
 
 /* ── DOVE DORMIRE 2x2 ──────────────── */
 #accommodation { background: var(--ivory-warm); }
@@ -539,70 +529,13 @@ footer {
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
-
-/* ── MOBILE LEGGIBILITÀ ─────────────── */
-@media(max-width: 680px) {
-  html { font-size: 17px; }
-  body { font-weight: 400; line-height: 1.75; }
-
-  /* Hero */
-  .hero-names-svg { width: clamp(260px, 88vw, 400px); }
-  .hero-date-linear { font-size: 1.4rem; }
-  .hero-location { font-size: 0.82rem; letter-spacing: 0.25em; }
-  .cd-num { font-size: 1.75rem; }
-  .cd-label { font-size: 0.62rem; }
-
-  /* Sezioni generali */
-  .section-label { font-size: 0.72rem; }
-  .section-title { font-size: clamp(1.7rem, 7vw, 2.2rem); }
-  .ornament { font-size: 0.85rem; }
-
-  /* Storia */
-  .story-body { font-size: 1.15rem; color: var(--brown); }
-  .story-pull { font-size: 1rem; }
-
-  /* Info card */
-  .info-body { font-size: 0.95rem; color: var(--brown); line-height: 1.7; }
-  .info-title { font-size: 1.1rem; }
-
-  /* Timeline */
-  .tl-time { font-size: 1.1rem; }
-  .tl-event { font-size: 0.92rem; font-weight: 500; }
-  .tl-detail { font-size: 0.85rem; color: var(--brown); }
-
-  /* Alloggio */
-  .acc-name { font-size: 1.05rem; }
-  .acc-body { font-size: 0.92rem; color: var(--brown); }
-  .acc-dist { font-size: 0.72rem; }
-  .acc-footer-note { font-size: 0.92rem; }
-
-  /* Logistica */
-  .dir-title { font-size: 0.78rem; }
-  .dir-body { font-size: 0.92rem; color: var(--brown); }
-  .location-head { font-size: 0.72rem; }
-
-  /* RSVP */
-  .rsvp-intro { font-size: 1.05rem; }
-  .form-label { font-size: 0.74rem; }
-  .form-input, .form-select, .form-textarea { font-size: 1rem; }
-  .attend-opt label { font-size: 0.78rem; }
-
-  /* Regalo / IBAN */
-  .gift-quote { font-size: 1.1rem; }
-  .gift-note { font-size: 0.95rem; color: var(--brown); }
-  .iban-name { font-size: 0.95rem; }
-  .iban-number { font-size: 0.92rem; }
-
-  /* Link testi */
-  .link-text { font-size: 0.76rem; }
-  .section-label { letter-spacing: 0.2em; }
-}
 </style>
 </head>
 <body>
 
 <!-- ══ NAV ════════════════════════════════════ -->
 <nav id="main-nav">
+  <span class="nav-brand">Silvia & Remo</span>
   <ul class="nav-links">
     <li><a href="#story">La storia</a></li>
     <li><a href="#notes">Informazioni utili</a></li>
@@ -619,7 +552,7 @@ footer {
   <div class="hero-floral"></div>
   <div class="hero-body">
     <p class="hero-eyebrow">Ci sposiamo!</p>
-    <img src="silvia-remo.png" alt="Silvia e Remo" class="hero-names-svg">
+    <img src="silvia-remo.svg" alt="Silvia e Remo" class="hero-names-svg">
     <div class="hero-rule"><span class="hero-rule-dot">✦</span></div>
     <p class="hero-date-linear">13 Settembre 2026</p>
     <p class="hero-location">Castell'Arquato</p>
@@ -693,8 +626,7 @@ footer {
       <div class="info-card reveal reveal-delay-1">
         <div class="info-icon">👠</div>
         <p class="info-title">Scarpe comode</p>
-        <p class="info-body">Elegante ma comodo: per raggiungere la cerimonia si attraverserà un breve tratto di selciato, mentre il ricevimento si svolgerà in una tenuta di campagna.Tacchi benvenuti… ma con un piano B!
-</p>
+        <p class="info-body">Elegante ma comodo: il ricevimento è in una tenuta di campagna con giardino e cortile. Tacchi benvenuti, ma tenetevi un piano B!</p>
       </div>
       <div class="info-card reveal reveal-delay-2">
         <div class="info-icon">☀️</div>
@@ -702,9 +634,9 @@ footer {
         <p class="info-body">A Castell'Arquato settembre è ancora splendido: giornate calde (22–27°C) e serate fresche sulle colline piacentine. Portate una giacca leggera o una stola per il tramonto!</p>
       </div>
       <div class="info-card reveal reveal-delay-3">
-        <div class="info-icon">✨</div>
-        <p class="info-title">Un’alternativa speciale</p>
-        <p class="info-body">La location non consente il lancio di riso, coriandoli o altri elementi, né all’interno né all’esterno. Abbiamo quindi organizzato per voi un’alternativa altrettanto suggestiva.</p>
+        <div class="info-icon">👶</div>
+        <p class="info-title">Aurora vi aspetta!</p>
+        <p class="info-body">I bambini sono assolutamente benvenuti! Per noi è una giornata da condividere con tutte le persone importanti.</p>
       </div>
     </div>
   </div>
@@ -735,7 +667,7 @@ footer {
         <div>
           <p class="tl-event">Pranzo & Festeggiamenti</p>
           <p class="tl-detail">Podere Palazzo Illica — Via Canale 5, San Lorenzo (PC)<br>
-            <a href="https://www.google.com/maps/place/Podere+Palazzo+Illica/@44.864141,9.8913681,17z/data=!4m18!1m8!3m7!1s0x47808cb6c367ddeb:0xcc86e418123c4116!2sVia+Canale,+5,+29014+San+Lorenzo+PC!3b1!8m2!3d44.864141!4d9.893943!16s%2Fg%2F11gmfrmq80!3m8!1s0x47808cb0cd458f17:0x986c3698abb5c01d!5m2!4m1!1i2!8m2!3d44.8622322!4d9.8946323!16s%2Fg%2F1tfmgny5?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Apri in Google Maps →</a>
+            <a href="https://maps.google.com/?q=Via+Canale+5+San+Lorenzo+Castell+Arquato" target="_blank">Apri in Google Maps →</a>
           </p>
         </div>
       </div>
@@ -743,25 +675,18 @@ footer {
         <span class="tl-time">18:00</span>
         <div class="tl-spine"><div class="tl-dot"></div></div>
         <div>
-          <p class="tl-event">Taglio della torta</p>
-          <p class="tl-detail">Tra gli ulivi del podere, a bordo piscina, con vista sul castello</p>
+          <p class="tl-event">Taglio torta</p>
+          <p class="tl-detail">Nella splendida corte del podere, tra le colline della Val d'Arda</p>
         </div>
       </div>
       <div class="tl-item reveal reveal-delay-3">
-        <span class="tl-time">20:00</span>
+        <span class="tl-time">22:00</span>
         <div class="tl-spine"><div class="tl-dot"></div></div>
         <div>
           <p class="tl-event">E vissero felici e contenti</p>
-          <p class="tl-detail">Saluti e ringraziamenti</p>
+          <p class="tl-detail">Balli, musica e brindisi fino a notte fonda</p>
         </div>
       </div>
-    </div>
-
-    <!-- BRUNCH -->
-    <div class="brunch-box reveal">
-      <p class="brunch-title">Vi va di unirvi a noi per un brunch in piscina?</p>
-      <p class="brunch-body" style="margin-bottom:0.5rem;"><strong style="color:var(--brown);">Lunedì 14 settembre 2026, ore 10:30</strong></p>
-      <p class="brunch-body">Per chi ha voglia di continuare a festeggiare, ci sarà un brunch al Podere Palazzo Illica il giorno dopo.<br> È informale e facoltativo.<br>Se vi va di partecipare, fatecelo sapere entro il 15 luglio.</p>
     </div>
   </div>
 </section>
@@ -831,7 +756,7 @@ footer {
         <div class="dir-card">
           <p class="dir-title">🚗 In auto</p>
           <p class="dir-body">Navigatore: <em>Via Canale 5, San Lorenzo, Castell'Arquato (PC).</em> Il podere si trova a circa 4 km dal centro. Ampio parcheggio disponibile in loco.</p>
-          <a href="https://www.google.com/maps/place/Podere+Palazzo+Illica/@44.864141,9.8913681,17z/data=!4m18!1m8!3m7!1s0x47808cb6c367ddeb:0xcc86e418123c4116!2sVia+Canale,+5,+29014+San+Lorenzo+PC!3b1!8m2!3d44.864141!4d9.893943!16s%2Fg%2F11gmfrmq80!3m8!1s0x47808cb0cd458f17:0x986c3698abb5c01d!5m2!4m1!1i2!8m2!3d44.8622322!4d9.8946323!16s%2Fg%2F1tfmgny5?entry=ttu&g_ep=EgoyMDI2MDQxMi4wIKXMDSoASAFQAw%3D%3D" class="link-text" target="_blank">Apri in Google Maps →</a>
+          <a href="https://maps.google.com/?q=Via+Canale+5+San+Lorenzo+Castell+Arquato" class="link-text" target="_blank">Apri in Google Maps →</a>
         </div>
       </div>
     </div>
